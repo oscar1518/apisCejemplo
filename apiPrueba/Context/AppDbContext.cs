@@ -1,4 +1,5 @@
-﻿using apiPrueba.Models;
+﻿using apiPrueba.DTOs;
+using apiPrueba.Models;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -13,8 +14,8 @@ namespace apiPrueba.Context
         {
         }
 
+        public DbSet<Album> Albums { get; set; }
         public DbSet<Artist> Artists { get; set; }
-
         public DbSet<Song> Songs { get; set; }
 
     }

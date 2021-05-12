@@ -10,15 +10,12 @@ namespace apiPrueba.Models
     public class Song
     {
         public int Id { get; set; }
-
-
-        public int ArtistId { get; set; }
+        public int AlbumId { get; set; }
         public string Name { get; set; }
-
         public DateTime PublishDate { get; set; }
 
-        //Virtual
-        public Artist Artist { get; set; }
+        public virtual Album Album { get; set; }
+
 
     }
 }

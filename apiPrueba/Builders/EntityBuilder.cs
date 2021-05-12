@@ -9,7 +9,7 @@ namespace apiPrueba.Builders
 {
     public class EntityBuilder
     {
-        public Song BuildEntity(SongDTO song)
+        public static Song BuildEntity(SongDTO song)
         {
             //SongDTO songDto = new SongDTO();
             //songDto.Id = song.Id;
@@ -26,7 +26,7 @@ namespace apiPrueba.Builders
             };
         }
 
-        public Artist BuildEntity(ArtistDTO artistDTO)
+        public static Artist BuildEntity(ArtistDTO artistDTO)
         {
             Artist artist = new Artist();
             artist.Id = artistDTO.Id;
@@ -34,14 +34,46 @@ namespace apiPrueba.Builders
             artist.Age = artistDTO.Age;
             artist.Genre = artistDTO.Genre;
 
-            foreach (SongDTO songDTO in artistDTO.Songs)
+            foreach (AlbumDTO albumDTO in artistDTO.Albums)
             {
-                artist.Songs.Add(BuildEntity(songDTO));
+                //artist.Albums.Add(BuildEntity(songDTO));
             }
 
             return artist;
 
         }
 
+
+        public static Artist BuildEntity(CreateArtistDTO createArtistDTO)
+        {
+            Artist artist = new Artist();
+            artist.Name = createArtistDTO.Name;
+            artist.Age = createArtistDTO.Age;
+            artist.Genre = createArtistDTO.Genre;
+
+            return artist;
+
+        }
+
+        public static Song BuildEntity(CreateSongDTO createSongDTO)
+        {
+            Song song = new Song();
+            song.Name = createSongDTO.Name;
+            song.AlbumId = createSongDTO.AlbumId;
+            song.PublishDate = createSongDTO.PublishDate;
+
+            return song;
+
+        }
+
+        public static Album BuildEntity(CreateAlbumDTO createAlbumDTO)
+        {
+            Album album = new Album();
+            album.Name = createAlbumDTO.Name;
+            album.ArtistId = createAlbumDTO.ArtistId;
+
+            return album;
+
+        }
     }
 }

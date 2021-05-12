@@ -3,7 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.29209.62
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "apiPrueba", "apiPrueba\apiPrueba.csproj", "{41463FD2-56B2-4307-B763-8C3E5E296B4B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "apiPrueba", "apiPrueba\apiPrueba.csproj", "{41463FD2-56B2-4307-B763-8C3E5E296B4B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConsoleRestApi", "ConsoleRestApi\ConsoleRestApi.csproj", "{04038A5E-CA6E-4D36-9EFB-C7198A834702}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WPFClient", "WPFClient\WPFClient.csproj", "{C35A8C7B-012E-4E3F-BADB-3604C5FB286F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +19,14 @@ Global
 		{41463FD2-56B2-4307-B763-8C3E5E296B4B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{41463FD2-56B2-4307-B763-8C3E5E296B4B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{41463FD2-56B2-4307-B763-8C3E5E296B4B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{04038A5E-CA6E-4D36-9EFB-C7198A834702}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{04038A5E-CA6E-4D36-9EFB-C7198A834702}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{04038A5E-CA6E-4D36-9EFB-C7198A834702}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{04038A5E-CA6E-4D36-9EFB-C7198A834702}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C35A8C7B-012E-4E3F-BADB-3604C5FB286F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C35A8C7B-012E-4E3F-BADB-3604C5FB286F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C35A8C7B-012E-4E3F-BADB-3604C5FB286F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C35A8C7B-012E-4E3F-BADB-3604C5FB286F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

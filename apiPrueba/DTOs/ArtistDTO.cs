@@ -11,6 +11,6 @@ namespace apiPrueba.DTOs
         public string Name { get; set; }
         public int Age { get; set; }
         public string Genre { get; set; }
-        public List<SongDTO> Songs { get; set; }
+        public List<AlbumDTO> Albums { get; set; } = new List<AlbumDTO>();
     }
 }

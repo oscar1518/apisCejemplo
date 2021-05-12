@@ -1,0 +1,98 @@
+﻿<Window x:Class="WPFClient.Views.EditAlbumView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d"
+        Title="AlbumWindow" Height="472.657" Width="816.705"
+        DataContext="{Binding Album,Source={StaticResource Locator}}">
+    <Grid RenderTransformOrigin="0.5,0.5" Margin="0,0,1,-21">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="533*"/>
+            <ColumnDefinition Width="275*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RenderTransform>
+            <TransformGroup>
+                <ScaleTransform/>
+                <SkewTransform/>
+                <RotateTransform Angle="-0.17"/>
+                <TranslateTransform/>
+            </TransformGroup>
+        </Grid.RenderTransform>
+        <ListView ItemsSource="{Binding Albums}" HorizontalAlignment="Left" Height="412" Margin="10,10,0,0" VerticalAlignment="Top" Width="572" Grid.ColumnSpan="2">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Header="Id" Width="50" DisplayMemberBinding="{Binding Id}"/>
+                    <GridViewColumn Header="Nombre" Width="150" DisplayMemberBinding="{Binding Name}"/>
+                    <GridViewColumn Header="Songs" Width="150" DisplayMemberBinding="{Binding SongsStr}"/>
+                    <GridViewColumn Header="Artist" Width="150" DisplayMemberBinding="{Binding ArtistStr}"/>
+                </GridView>
+            </ListView.View>
+        </ListView>
+        <Button Content="Get all Albums" Command="{Binding getAll}" Margin="66.272,10,59,410" Grid.Column="1"/>
+        <Button Content="Get Album by Id" Command="{Binding getId}" Margin="66.272,76,59,344" Grid.Column="1"/>
+        <TextBox x:Name="tbId" 
+                 HorizontalAlignment="Left" 
+                 Height="23"  
+                 Margin="108.272,53,0,0" 
+                 TextWrapping="Wrap" 
+                 Text="{Binding IdStr, UpdateSourceTrigger=PropertyChanged}" 
+                 VerticalAlignment="Top" 
+                 Width="108" Grid.Column="1" />
+        <Label Content="{Binding ArtistIdStr}" HorizontalAlignment="Left" Margin="202.272,41,0,0" VerticalAlignment="Top" Grid.Column="1"/>
+        <TextBox x:Name="tbName" 
+            HorizontalAlignment="Left" 
+            Height="23"  
+            Margin="108.272,119,0,0" 
+            TextWrapping="Wrap" 
+            Text="{Binding Name, UpdateSourceTrigger=PropertyChanged}" 
+            VerticalAlignment="Top" 
+            Width="108" Grid.Column="1" />
+        <Button Content="Get Album by Name" Command="{Binding getName}" Margin="66.272,142,59,279" Grid.Column="1"/>
+        <Button Content="Post Album" Command="{Binding post}" Margin="66.272,316,137,106" IsEnabled="{Binding IsChecked, ElementName=chBoxPost}" Grid.Column="1"/>
+        <TextBox x:Name="Age" 
+            IsEnabled="{Binding IsChecked, ElementName=chBoxPut}"
+            HorizontalAlignment="Left" 
+            Height="23"  
+            Margin="107,204,0,0" 
+            TextWrapping="Wrap" 
+            Text="{Binding IdStr, UpdateSourceTrigger=PropertyChanged}" 
+            VerticalAlignment="Top" 
+            Width="108" Grid.Column="1" />
+        <TextBox x:Name="NombreP" 
+            HorizontalAlignment="Left" 
+            Height="23"  
+            Margin="108.272,232,0,0" 
+            TextWrapping="Wrap" 
+            Text="{Binding Name, UpdateSourceTrigger=PropertyChanged}" 
+            VerticalAlignment="Top" 
+            Width="108" Grid.Column="1" />
+        <TextBox 
+            HorizontalAlignment="Left" 
+            Height="23"  
+            Margin="127,260,0,0" 
+            TextWrapping="Wrap" 
+            Text="{Binding ArtistId, UpdateSourceTrigger=PropertyChanged}" 
+            VerticalAlignment="Top" 
+            Width="89" Grid.Column="1" />
+        <RadioButton x:Name="chBoxPost" GroupName="group1" Content="DoPost" HorizontalAlignment="Left" Margin="66.272,184,0,0" VerticalAlignment="Top" Grid.Column="1"/>
+        <RadioButton x:Name="chBoxPut" GroupName="group1" Content="Do Put" HorizontalAlignment="Left" Margin="143.272,184,0,0" VerticalAlignment="Top" Grid.Column="1"/>
+        <Button Content="Put Album" Command="{Binding put}" Margin="143.272,316,59,106" IsEnabled="{Binding IsChecked, ElementName=chBoxPut}" Grid.Column="1"/>
+        <Label Content="Id" HorizontalAlignment="Left" Margin="65.272,50,0,0" VerticalAlignment="Top" Grid.Column="1"/>
+        <Label Content="Name" HorizontalAlignment="Left" Margin="65.272,116,0,0" VerticalAlignment="Top" Grid.Column="1"/>
+        <Label Content="Id" HorizontalAlignment="Left" Margin="66.272,202,0,0" VerticalAlignment="Top" Grid.Column="1"/>
+        <Label Content="Name" HorizontalAlignment="Left" Margin="66.272,228,0,0" VerticalAlignment="Top" Grid.Column="1"/>
+        <Label Content="Artist ID
+               " HorizontalAlignment="Left" Margin="66.272,256,0,0" VerticalAlignment="Top" Grid.Column="1"/>
+        <Button Content="Delete Album" Command="{Binding delete}" Margin="66.272,380,59,41" Grid.Column="1"/>
+        <TextBox x:Name="tbId_Copy" 
+            HorizontalAlignment="Left" 
+            Height="23"  
+            Margin="108.272,357,0,0" 
+            TextWrapping="Wrap" 
+            Text="{Binding IdStr, UpdateSourceTrigger=PropertyChanged}" 
+            VerticalAlignment="Top" 
+            Width="108" Grid.Column="1" />
+        <Label Content="Id" HorizontalAlignment="Left" Margin="77.272,353,0,0" VerticalAlignment="Top" Grid.Column="1"/>
+    </Grid>
+</Window>

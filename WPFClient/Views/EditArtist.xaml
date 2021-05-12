@@ -1,0 +1,118 @@
+﻿<Window x:Class="WPFClient.EditArtist"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WPFClient"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="501.657" Width="816.705"
+        DataContext="{Binding Main,Source={StaticResource Locator}}">
+    <Grid RenderTransformOrigin="0.5,0.5" Margin="0,0,1,-54">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="227*"/>
+            <ColumnDefinition Width="177*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RenderTransform>
+            <TransformGroup>
+                <ScaleTransform/>
+                <SkewTransform/>
+                <RotateTransform Angle="-0.17"/>
+                <TranslateTransform/>
+            </TransformGroup>
+        </Grid.RenderTransform>
+        <ListView ItemsSource="{Binding Artists}" HorizontalAlignment="Left" Height="412" Margin="10,10,0,0" VerticalAlignment="Top" Width="572" Grid.ColumnSpan="2">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Header="Id" Width="50" DisplayMemberBinding="{Binding Id}"/>
+                    <GridViewColumn Header="Nombre" Width="150" DisplayMemberBinding="{Binding Name}"/>
+                    <GridViewColumn Header="Age" Width="50" DisplayMemberBinding="{Binding Age}"/>
+                    <GridViewColumn Header="Genere" Width="150" DisplayMemberBinding="{Binding Genre}"/>
+                    <GridViewColumn Header="Albums" Width="150" DisplayMemberBinding="{Binding AlbumsName}"/>
+                </GridView>
+            </ListView.View>
+        </ListView>
+        <Button Content="Get all Artists" Command="{Binding getAll}" Margin="145.18,10,59,475" Grid.Column="1"/>
+        <Button Content="Get Artist by Id" Command="{Binding getId}" Margin="145.18,76,59,410" Grid.Column="1"/>
+        <TextBox x:Name="tbId" 
+                 HorizontalAlignment="Left" 
+                 Height="23"  
+                 Margin="187.18,53,0,0" 
+                 TextWrapping="Wrap" 
+                 Text="{Binding ArtistIdStr, UpdateSourceTrigger=PropertyChanged}" 
+                 VerticalAlignment="Top" 
+                 Width="108" Grid.Column="1" />
+        <Label Content="{Binding ArtistIdStr}" HorizontalAlignment="Left" Margin="281.18,41,0,0" VerticalAlignment="Top" Grid.Column="1"/>
+        <TextBox x:Name="tbName" 
+            HorizontalAlignment="Left" 
+            Height="23"  
+            Margin="187.18,119,0,0" 
+            TextWrapping="Wrap" 
+            Text="{Binding ArtistName, UpdateSourceTrigger=PropertyChanged}" 
+            VerticalAlignment="Top" 
+            Width="108" Grid.Column="1" />
+        <Button Content="Get Artist by Name" Command="{Binding getName}" Margin="145.18,142,59,342" Grid.Column="1"/>
+        <Button Content="Post Artist" Command="{Binding post}" Margin="145.18,316,137,173" IsEnabled="{Binding IsChecked, ElementName=chBoxPost}" Grid.Column="1"/>
+        <TextBox x:Name="Genre" 
+            HorizontalAlignment="Left" 
+            Height="23"  
+            Margin="187.18,288,0,0" 
+            TextWrapping="Wrap" 
+            Text="{Binding Genre, UpdateSourceTrigger=PropertyChanged}" 
+            VerticalAlignment="Top" 
+            Width="108" Grid.Column="1" />
+        <TextBox x:Name="Age" 
+            HorizontalAlignment="Left" 
+            Height="23"  
+            Margin="187.18,260,0,0" 
+            TextWrapping="Wrap" 
+            Text="{Binding AgeStr, UpdateSourceTrigger=PropertyChanged}" 
+            VerticalAlignment="Top" 
+            Width="108" Grid.Column="1" />
+        <TextBox x:Name="NombreP" 
+            HorizontalAlignment="Left" 
+            Height="23"  
+            Margin="187.18,232,0,0" 
+            TextWrapping="Wrap" 
+            Text="{Binding ArtistName, UpdateSourceTrigger=PropertyChanged}" 
+            VerticalAlignment="Top" 
+            Width="108" TextChanged="NombreP_TextChanged" Grid.Column="1" />
+        <TextBox 
+            IsEnabled="{Binding IsChecked, ElementName=chBoxPut}"
+            HorizontalAlignment="Left" 
+            Height="23"  
+            Margin="187.18,204,0,0" 
+            TextWrapping="Wrap" 
+            Text="{Binding ArtistIdStr, UpdateSourceTrigger=PropertyChanged}" 
+            VerticalAlignment="Top" 
+            Width="108" Grid.Column="1" />
+        <RadioButton x:Name="chBoxPost" GroupName="group1" Content="DoPost" HorizontalAlignment="Left" Margin="145.18,184,0,0" VerticalAlignment="Top" Grid.Column="1"/>
+        <RadioButton x:Name="chBoxPut" GroupName="group1" Content="Do Put" HorizontalAlignment="Left" Margin="222.18,184,0,0" VerticalAlignment="Top" Grid.Column="1"/>
+        <Button Content="Put Artist" Command="{Binding put}" Margin="222.18,316,59,174" IsEnabled="{Binding IsChecked, ElementName=chBoxPut}" Grid.Column="1"/>
+        <Label Content="Id" HorizontalAlignment="Left" Margin="144.18,50,0,0" VerticalAlignment="Top" Grid.Column="1"/>
+        <Label Content="Name" HorizontalAlignment="Left" Margin="144.18,116,0,0" VerticalAlignment="Top" Grid.Column="1"/>
+        <Label Content="Id" HorizontalAlignment="Left" Margin="145.18,202,0,0" VerticalAlignment="Top" Grid.Column="1"/>
+        <Label Content="Name" HorizontalAlignment="Left" Margin="145.18,228,0,0" VerticalAlignment="Top" Grid.Column="1"/>
+        <Label Content="Age" HorizontalAlignment="Left" Margin="145.18,256,0,0" VerticalAlignment="Top" Grid.Column="1"/>
+        <Label Content="Genre" HorizontalAlignment="Left" Margin="145.18,284,0,0" VerticalAlignment="Top" Grid.Column="1"/>
+        <Button Content="Delete Artist" Command="{Binding delete}" Margin="145.18,380,59,106" Grid.Column="1"/>
+        <TextBox x:Name="tbId_Copy" 
+            HorizontalAlignment="Left" 
+            Height="23"  
+            Margin="187.18,357,0,0" 
+            TextWrapping="Wrap" 
+            Text="{Binding ArtistIdStr, UpdateSourceTrigger=PropertyChanged}" 
+            VerticalAlignment="Top" 
+            Width="108" Grid.Column="1" />
+        <Label Content="Id" HorizontalAlignment="Left" Margin="156.18,353,0,0" VerticalAlignment="Top" Grid.Column="1"/>
+        <ComboBox ItemsSource="{Binding Artists}" SelectedItem="{Binding SelectedArtist}" DisplayMemberPath="Name" Text="Artista" HorizontalAlignment="Left" Margin="78,434,0,0" VerticalAlignment="Top" Width="160" Height="25">
+
+        </ComboBox>
+        <Label Content="Artistas:" HorizontalAlignment="Left" Margin="18,431,0,0" VerticalAlignment="Top" Width="97"/>
+        <ComboBox ItemsSource="{Binding SelectedArtist.Albums}" SelectedItem="{Binding SelectedAlbum}" DisplayMemberPath="Name" HorizontalAlignment="Left" Margin="296,434,0,0" VerticalAlignment="Top" Width="160" Height="25" Grid.ColumnSpan="2">
+
+        </ComboBox>
+        <Label Content="Album:" HorizontalAlignment="Left" Margin="244,432,0,0" VerticalAlignment="Top" Width="97"/>
+        <TextBox Text="{Binding SelectedArtist.Age}" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="28,434,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="147"/>
+        <TextBox Text="{Binding SelectedAlbum.Name}" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="188,434,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="147"/>
+    </Grid>
+</Window>

@@ -15,9 +15,8 @@ namespace apiPrueba.Models
         public int Age { get; set; }
         public string Genre { get; set; }
 
-
-        [ForeignKey("ArtistId")]
-        public ICollection<Song> Songs { get; set; } = new List<Song>();
+        //[ForeignKey("AlbumId")]
+        public ICollection<Album> Albums { get; set; } = new List<Album>();
 
     }
 

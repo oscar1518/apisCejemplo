@@ -17,6 +17,22 @@ namespace apiPrueba.Migrations
                 .HasAnnotation("ProductVersion", "2.2.6-servicing-10079")
                 .HasAnnotation("Relational:MaxIdentifierLength", 64);
 
+            modelBuilder.Entity("apiPrueba.Models.Album", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<int>("ArtistId");
+
+                    b.Property<string>("Name");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("ArtistId");
+
+                    b.ToTable("Albums");
+                });
+
             modelBuilder.Entity("apiPrueba.Models.Artist", b =>
                 {
                     b.Property<int>("Id")
@@ -33,12 +49,12 @@ namespace apiPrueba.Migrations
                     b.ToTable("Artists");
                 });
 
-            modelBuilder.Entity("apiPrueba.Models.Songs", b =>
+            modelBuilder.Entity("apiPrueba.Models.Song", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd();
 
-                    b.Property<int>("ArtistId");
+                    b.Property<int>("AlbumId");
 
                     b.Property<string>("Name");
 
@@ -46,16 +62,24 @@ namespace apiPrueba.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("ArtistId");
+                    b.HasIndex("AlbumId");
 
                     b.ToTable("Songs");
                 });
 
-            modelBuilder.Entity("apiPrueba.Models.Songs", b =>
+            modelBuilder.Entity("apiPrueba.Models.Album", b =>
                 {
                     b.HasOne("apiPrueba.Models.Artist", "Artist")
-                        .WithMany("Songs")
+                        .WithMany("Albums")
                         .HasForeignKey("ArtistId")
+                        .OnDelete(DeleteBehavior.Cascade);
+                });
+
+            modelBuilder.Entity("apiPrueba.Models.Song", b =>
+                {
+                    b.HasOne("apiPrueba.Models.Album", "Album")
+                        .WithMany("Songs")
+                        .HasForeignKey("AlbumId")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 #pragma warning restore 612, 618

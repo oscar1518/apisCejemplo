@@ -9,7 +9,7 @@ namespace apiPrueba.Builders
 {
     public class DTOBuilder
     {
-        public SongDTO BuildDTO(Song song)
+        public static SongDTO BuildSongDTO(Song song)
         {
             //SongDTO songDto = new SongDTO();
             //songDto.Id = song.Id;
@@ -22,13 +22,20 @@ namespace apiPrueba.Builders
             {
                 Id = song.Id,
                 Name = song.Name,
-                PublishDate = song.PublishDate
+                PublishDate = song.PublishDate,
+                //ArtistName = song.Artist.Name,
+                //ArtistAge = song.Artist.Age
+                Album = new AlbumDTO
+                {
+                    Id = song.Album.Id,
+                    Name = song.Album.Name,
+                }
             };
 
 
         }
 
-        public ArtistDTO BuildDTO(Artist artist)
+        public static ArtistDTO BuildArtistDTO(Artist artist)
         {
             ArtistDTO artistDTO = new ArtistDTO();
             artistDTO.Id = artist.Id;
@@ -36,9 +43,9 @@ namespace apiPrueba.Builders
             artistDTO.Age = artist.Age;
             artistDTO.Genre = artist.Genre;
 
-            foreach (Song song in artist.Songs)
+            foreach (Album album in artist.Albums)
             { 
-                artistDTO.Songs.Add(BuildDTO(song));
+               artistDTO.Albums.Add(BuildAlbumDTO(album));
             }
 
             return artistDTO;
@@ -52,6 +59,29 @@ namespace apiPrueba.Builders
             //    Genre = artist.Genre,
             //    Songs = artist.Songs.Select(song => BuildDTO(song)).ToList()
             //};
+        }
+
+        public static AlbumDTO BuildAlbumDTO(Album album)
+        {
+  
+            AlbumDTO albumtDTO = new AlbumDTO();
+            albumtDTO.Id = album.Id;
+            albumtDTO.Name = album.Name;
+            albumtDTO.Artist = new ArtistDTO()
+            {
+                Id = album.Artist.Id,
+                Name = album.Artist.Name
+                
+            };
+
+
+            foreach (Song song in album.Songs)
+            {
+                albumtDTO.Songs.Add(BuildSongDTO(song));
+            }
+
+            return albumtDTO;
+
         }
 
     }
