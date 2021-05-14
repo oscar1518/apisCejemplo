@@ -18,5 +18,7 @@ namespace apiPrueba.Context
         public DbSet<Artist> Artists { get; set; }
         public DbSet<Song> Songs { get; set; }
 
+        public DbSet<Factura> Facturas { get; set; }
+
     }
 }

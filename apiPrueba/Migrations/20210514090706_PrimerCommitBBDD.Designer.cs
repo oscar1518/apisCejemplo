@@ -9,8 +9,8 @@ using apiPrueba.Context;
 namespace apiPrueba.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20210505123720_InitialCreate")]
-    partial class InitialCreate
+    [Migration("20210514090706_PrimerCommitBBDD")]
+    partial class PrimerCommitBBDD
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -22,51 +22,79 @@ namespace apiPrueba.Migrations
             modelBuilder.Entity("apiPrueba.Models.Album", b =>
                 {
                     b.Property<int>("Id")
-                        .ValueGeneratedOnAdd();
+                        .ValueGeneratedOnAdd()
+                        .HasColumnName("id");
 
-                    b.Property<int>("ArtistId");
+                    b.Property<int>("ArtistId")
+                        .HasColumnName("artist_id");
 
-                    b.Property<string>("Name");
+                    b.Property<string>("Name")
+                        .HasColumnName("name");
 
                     b.HasKey("Id");
 
                     b.HasIndex("ArtistId");
 
-                    b.ToTable("Albums");
+                    b.ToTable("albums");
                 });
 
             modelBuilder.Entity("apiPrueba.Models.Artist", b =>
                 {
                     b.Property<int>("Id")
-                        .ValueGeneratedOnAdd();
+                        .ValueGeneratedOnAdd()
+                        .HasColumnName("id");
 
-                    b.Property<int>("Age");
+                    b.Property<int>("Age")
+                        .HasColumnName("age");
 
-                    b.Property<string>("Genre");
+                    b.Property<string>("Genre")
+                        .HasColumnName("genre_molon");
 
-                    b.Property<string>("Name");
+                    b.Property<string>("Name")
+                        .HasColumnName("name");
 
                     b.HasKey("Id");
 
-                    b.ToTable("Artists");
+                    b.ToTable("artists");
+                });
+
+            modelBuilder.Entity("apiPrueba.Models.Factura", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<string>("Codigo");
+
+                    b.Property<int>("EjercicioContable");
+
+                    b.Property<double>("Importe");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Facturas");
                 });
 
             modelBuilder.Entity("apiPrueba.Models.Song", b =>
                 {
                     b.Property<int>("Id")
-                        .ValueGeneratedOnAdd();
+                        .ValueGeneratedOnAdd()
+                        .HasColumnName("id");
 
-                    b.Property<int>("AlbumId");
+                    b.Property<int>("AlbumId")
+                        .HasColumnName("album_id");
 
-                    b.Property<string>("Name");
+                    b.Property<string>("Name")
+                        .HasColumnName("name")
+                        .HasMaxLength(10);
 
-                    b.Property<DateTime>("PublishDate");
+                    b.Property<DateTime>("PublishDate")
+                        .HasColumnName("publish_date");
 
                     b.HasKey("Id");
 
                     b.HasIndex("AlbumId");
 
-                    b.ToTable("Songs");
+                    b.ToTable("songs");
                 });
 
             modelBuilder.Entity("apiPrueba.Models.Album", b =>

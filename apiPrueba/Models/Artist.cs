@@ -6,13 +6,19 @@ using System.Threading.Tasks;
 
 namespace apiPrueba.Models
 {
-    [Table("Artists")]
+    [Table("artists")]
     public class Artist
     {
-
+        [Column("id")]
         public int Id { get; set; }
+
+        [Column("name")]
         public string Name { get; set; }
+
+        [Column("age")]
         public int Age { get; set; }
+
+        [Column("genre_molon")]
         public string Genre { get; set; }
 
         //[ForeignKey("AlbumId")]

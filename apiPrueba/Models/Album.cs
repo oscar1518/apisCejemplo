@@ -6,10 +6,16 @@ using System.Threading.Tasks;
 
 namespace apiPrueba.Models
 {
+    [Table("albums")]
     public class Album
     {
+        [Column("id")]
         public int Id { get; set; }
+
+        [Column("name")]
         public string Name { get; set; }
+
+        [Column("artist_id")]
         public int ArtistId { get; set; }
 
         //[ForeignKey("SongId")]
